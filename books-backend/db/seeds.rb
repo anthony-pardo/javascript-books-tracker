@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+book1 = Book.create(title: 'Lord of the Rings', author: 'JRRT')
+Review.create(author: 'Random User', rating: 5, book_id: book1.id)
+Review.create(author: 'Random User1', rating: 4, book_id: book1.id)

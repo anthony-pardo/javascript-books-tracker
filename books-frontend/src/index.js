@@ -1,5 +1,11 @@
-console.log("testing...");
 const BACKEND_URL = 'http://localhost:3000';
-fetch(`${BACKEND_URL}/test`)
+const BOOKS_URL = 'http://localhost:3000/books';
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  fetch(BOOKS_URL)
   .then(response => response.json())
-  .then(parsedResponse => console.log(parsedResponse));
+  .then(data => console.log(data));
+
+  
+  
+});
