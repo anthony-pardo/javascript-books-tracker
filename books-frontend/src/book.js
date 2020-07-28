@@ -10,7 +10,7 @@ class Book {
     const booksDiv = document.getElementById('books-container');
 
     booksDiv.innerHTML += 
-    `<div class="col-md-4">
+    `<div class="col-md-4" id="book-id-${this.id}">
       <div class="card mb-4 shadow-sm">
         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
           <title>${this.title}</title>
@@ -22,7 +22,7 @@ class Book {
           <p class="card-text">Title Summary.</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary" id=${this.id} onClick="deleteBook()">Delete Book</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary delete-book-button" onclick="deleteBook()" data-id="${this.id}">Delete Book</button>
               <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
             </div>
           </div>
@@ -31,3 +31,4 @@ class Book {
     </div>`;
   }
 }
+
