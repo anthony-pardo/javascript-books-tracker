@@ -1,4 +1,12 @@
 class BooksController < ApplicationController
+  def show
+    book = Book.find(params[:id])
+    options = {
+      include: [:reviews], fields: { reviews: [:rating, :author ]}
+    }
+    render json: BookSerializer.new(book, options)
+  end
+
   def index
     books = Book.all 
     options = {

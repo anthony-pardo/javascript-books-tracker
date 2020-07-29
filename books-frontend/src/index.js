@@ -22,6 +22,16 @@ function fetchBooks() {
   });
 }
 
+// read individual Book
+function fetchBook() {
+  const bookId = event.target.dataset.id;
+  fetch(`${BOOKS_URL}/${bookId}`)
+  .then(response => response.json())
+  .then(book => {
+    console.log(book);
+  });
+}
+
 // create 
 function bookFormSubmission() {
   event.preventDefault();
