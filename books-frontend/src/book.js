@@ -23,7 +23,7 @@ class Book {
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               <button type="button" class="btn btn-sm btn-outline-secondary delete-book-button" onclick="deleteBook()" data-id="${this.id}">Delete Book</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="viewBook()" data-id="${this.id}">View Book Details</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fetchBookWithReviews()" data-id="${this.id}">View Book Details</button>
             </div>
           </div>
         </div>
