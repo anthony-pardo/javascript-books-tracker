@@ -24,13 +24,21 @@ function fetchBooks() {
 
 // read individual Book
 function fetchBookWithReviews() {
+  const booksDiv = document.getElementById('books-container');
+  booksDiv.innerHTML = "";
+  const reviewsDiv = document.getElementById('reviews-container');
+  reviewsDiv.innerHTML = "";
+  
+
   const bookId = event.target.dataset.id;
   fetch(`${BOOKS_URL}/${bookId}`)
   .then(response => response.json())
   .then(book => {
     console.log(book);
-    let b = new Book(book.id, book.attributes.title, book.attributes.author);
+    let b = new Book(book.data.id, book.data.attributes.title, book.data.attributes.author);
     b.renderBook();
+    const reviewsHeader = document.getElementById('reviews-header');
+    reviewsHeader.innerHTML = `Reviews for ${book.data.attributes.title}:`;
   });
 
   fetch(`${BOOKS_URL}/${bookId}/reviews`)
