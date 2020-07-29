@@ -23,12 +23,24 @@ function fetchBooks() {
 }
 
 // read individual Book
-function fetchBook() {
+function fetchBookWithReviews() {
   const bookId = event.target.dataset.id;
   fetch(`${BOOKS_URL}/${bookId}`)
   .then(response => response.json())
   .then(book => {
     console.log(book);
+    let b = new Book(book.id, book.attributes.title, book.attributes.author);
+    b.renderBook();
+  });
+
+  fetch(`${BOOKS_URL}/${bookId}/reviews`)
+  .then(response => response.json())
+  .then(reviews => {
+    console.log(reviews);
+    for (const review of reviews.data) {
+      let r = new Review(review.id, review.attributes.author, review.attributes.content, review.attributes.rating);
+      r.renderReview();
+    }
   });
 }
 
