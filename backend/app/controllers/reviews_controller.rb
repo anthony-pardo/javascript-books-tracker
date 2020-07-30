@@ -1,16 +1,16 @@
-class ReviewsController < ApplicationController
+class PomodorosController < ApplicationController
   def index
-    if params[:book_id]
-      book = Book.find_by(id: params[:book_id])
-      if book.nil?
-        render json: book.errors, status: :unprocessable_entity 
+    if params[:habit_id]
+      habit = Habit.find_by(id: params[:habit_id])
+      if habit.nil?
+        render json: habit.errors, status: :unprocessable_entity 
       else
-        reviews = book.reviews
-        render json: ReviewSerializer.new(reviews)
+        pomodoros = habit.pomodoros
+        render json: PomodoroSerializer.new(pomodoros)
       end
     else 
-      reviews = Review.all
-      render json: ReviewSerializer.new(reviews)
+      pomodoros = Pomodoro.all
+      render json: PomodoroSerializer.new(pomodoros)
     end
   end
 end
