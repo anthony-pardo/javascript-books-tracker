@@ -1,4 +1,4 @@
-class Review {
+class Pomodoro {
   constructor(id, author, content, rating) {
     this.id = id;
     this.author = author;
@@ -6,12 +6,12 @@ class Review {
     this.rating = rating;
   }
 
-  // render book instance method
-  renderReview() {
-    const reviewsDiv = document.getElementById('reviews-container');
+  // render habit instance method
+  renderPomodoro() {
+    const pomodorosDiv = document.getElementById('pomodoros-container');
 
-    reviewsDiv.innerHTML += 
-    `<div class="col-md-4" id="book-id-${this.id}">
+    pomodorosDiv.innerHTML += 
+    `<div class="col-md-4" id="habit-id-${this.id}">
       <div class="card mb-4 shadow-sm">
         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
           <title>${this.author}</title>
@@ -23,8 +23,8 @@ class Review {
           <p class="card-text">${this.content}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary delete-review-button" onclick="deleteReview()" data-id="${this.id}">Delete Review</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="viewReview()" data-id="${this.id}">View Review Details</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary delete-pomodoro-button" onclick="deletePomodoro()" data-id="${this.id}">Delete Pomodoro</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="viewPomodoro()" data-id="${this.id}">View Pomodoro Details</button>
             </div>
           </div>
         </div>

@@ -1,63 +1,63 @@
 const BACKEND_URL = 'http://localhost:3000';
-const BOOKS_URL = `${BACKEND_URL}/books`;
+const HABITS_URL = `${BACKEND_URL}/habits`;
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  fetchBooks();
-  let booksForm = document.getElementById("new-book-form");
-  booksForm.addEventListener('submit', bookFormSubmission);
+  fetchHabits();
+  let habitsForm = document.getElementById("new-habit-form");
+  habitsForm.addEventListener('submit', habitFormSubmission);
   
 });
 
 
 // read 
-function fetchBooks() {
+function fetchHabits() {
   fetch(BOOKS_URL)
   .then(response => response.json())
-  .then(books => {
-    console.log(books);
-    for (const book of books.data) {
-      let b = new Book(book.id, book.attributes.title, book.attributes.author);
-      b.renderBook();
+  .then(habits => {
+    console.log(habits);
+    for (const habit of habits.data) {
+      let b = new Habit(habit.id, habit.attributes.title, habit.attributes.author);
+      b.renderHabit();
     }
   });
 }
 
-// read individual Book
-function fetchBookWithReviews() {
-  const booksDiv = document.getElementById('books-container');
-  booksDiv.innerHTML = "";
-  const reviewsDiv = document.getElementById('reviews-container');
-  reviewsDiv.innerHTML = "";
+// read individual Habit
+function fetchHabitWithPomodoros() {
+  const habitsDiv = document.getElementById('habits-container');
+  habitsDiv.innerHTML = "";
+  const pomodorosDiv = document.getElementById('pomodoros-container');
+  pomodorosDiv.innerHTML = "";
   
 
-  const bookId = event.target.dataset.id;
-  fetch(`${BOOKS_URL}/${bookId}`)
+  const habitId = event.target.dataset.id;
+  fetch(`${BOOKS_URL}/${habitId}`)
   .then(response => response.json())
-  .then(book => {
-    console.log(book);
-    let b = new Book(book.data.id, book.data.attributes.title, book.data.attributes.author);
-    b.renderBook();
-    const reviewsHeader = document.getElementById('reviews-header');
-    reviewsHeader.innerHTML = `Reviews for ${book.data.attributes.title}:`;
+  .then(habit => {
+    console.log(habit);
+    let b = new Habit(habit.data.id, habit.data.attributes.title, habit.data.attributes.author);
+    b.renderHabit();
+    const pomodorosHeader = document.getElementById('pomodoros-header');
+    pomodorosHeader.innerHTML = `Pomodoros for ${habit.data.attributes.title}:`;
   });
 
-  fetch(`${BOOKS_URL}/${bookId}/reviews`)
+  fetch(`${BOOKS_URL}/${habitId}/pomodoros`)
   .then(response => response.json())
-  .then(reviews => {
-    console.log(reviews);
-    for (const review of reviews.data) {
-      let r = new Review(review.id, review.attributes.author, review.attributes.content, review.attributes.rating);
-      r.renderReview();
+  .then(pomodoros => {
+    console.log(pomodoros);
+    for (const pomodoro of pomodoros.data) {
+      let r = new Pomodoro(pomodoro.id, pomodoro.attributes.author, pomodoro.attributes.content, pomodoro.attributes.rating);
+      r.renderPomodoro();
     }
   });
 }
 
 // create 
-function bookFormSubmission() {
+function habitFormSubmission() {
   event.preventDefault();
   let title = document.getElementById('title').value;
   let author = document.getElementById('author').value;
-  let book = {
+  let habit = {
     title: title,
     author: author
   }
@@ -68,21 +68,21 @@ function bookFormSubmission() {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-    body: JSON.stringify(book)
+    body: JSON.stringify(habit)
     })
     .then(resp => resp.json())
-    .then(book => {
-        let b  = new Book(book.id, book.title, book.author)
-        b.renderBook();
+    .then(habit => {
+        let b  = new Habit(habit.id, habit.title, habit.author)
+        b.renderHabit();
     });
 }
 
 
 // delete
-function deleteBook() {
-  const bookId = event.target.dataset.id;
-  console.log(bookId);
-  fetch(`${BACKEND_URL}/books/${bookId}`, {
+function deleteHabit() {
+  const habitId = event.target.dataset.id;
+  console.log(habitId);
+  fetch(`${BACKEND_URL}/habits/${habitId}`, {
     method: 'DELETE'
   }); 
   

@@ -1,16 +1,17 @@
-class Book {
-  constructor(id, title, author) {
+class Habit {
+  constructor(id, title, goal, actual=0) {
     this.id = id;
     this.title = title;
-    this.author = author;
+    this.goal = goal;
+    this.actual = actual;
   }
 
-  // render book instance method
-  renderBook() {
-    const booksDiv = document.getElementById('books-container');
+  // render habit instance method
+  renderHabit() {
+    const habitsDiv = document.getElementById('habits-container');
 
-    booksDiv.innerHTML += 
-    `<div class="col-md-4" id="book-id-${this.id}">
+    habitsDiv.innerHTML += 
+    `<div class="col-md-4" id="habit-id-${this.id}">
       <div class="card mb-4 shadow-sm">
         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
           <title>${this.title}</title>
@@ -22,8 +23,8 @@ class Book {
           <p class="card-text">Title Summary.</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary delete-book-button" onclick="deleteBook()" data-id="${this.id}">Delete Book</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fetchBookWithReviews()" data-id="${this.id}">View Book Details</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary delete-habit-button" onclick="deleteHabit()" data-id="${this.id}">Delete Habit</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fetchHabitWithPomodoros()" data-id="${this.id}">View Habit Details</button>
             </div>
           </div>
         </div>
