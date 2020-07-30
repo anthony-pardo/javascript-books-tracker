@@ -17,7 +17,8 @@ class Habit {
           <title>${this.title}</title>
           <rect width="100%" height="100%" fill="#55595c"/>
           <text x="50%" y="50%" fill="#eceeef" dy=".3em">${this.title}</text><br>
-          <text x="50%" y="50%" fill="#eceeef" dy=".3em">by ${this.author}</text>
+          <text x="50%" y="50%" fill="#eceeef" dy=".3em">goal: ${this.goal}</text>
+          <text x="50%" y="50%" fill="#eceeef" dy=".3em">actual: ${this.actual}</text>
         </svg>
         <div class="card-body">
           <p class="card-text">Title Summary.</p>

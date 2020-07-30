@@ -11,12 +11,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 // read 
 function fetchHabits() {
-  fetch(BOOKS_URL)
+  fetch(HABITS_URL)
   .then(response => response.json())
   .then(habits => {
     console.log(habits);
     for (const habit of habits.data) {
-      let b = new Habit(habit.id, habit.attributes.title, habit.attributes.author);
+      let b = new Habit(habit.id, habit.attributes.title, habit.attributes.goal);
       b.renderHabit();
     }
   });
@@ -31,22 +31,22 @@ function fetchHabitWithPomodoros() {
   
 
   const habitId = event.target.dataset.id;
-  fetch(`${BOOKS_URL}/${habitId}`)
+  fetch(`${HABITS_URL}/${habitId}`)
   .then(response => response.json())
   .then(habit => {
     console.log(habit);
-    let b = new Habit(habit.data.id, habit.data.attributes.title, habit.data.attributes.author);
+    let b = new Habit(habit.data.id, habit.data.attributes.title, habit.data.attributes.goal);
     b.renderHabit();
     const pomodorosHeader = document.getElementById('pomodoros-header');
     pomodorosHeader.innerHTML = `Pomodoros for ${habit.data.attributes.title}:`;
   });
 
-  fetch(`${BOOKS_URL}/${habitId}/pomodoros`)
+  fetch(`${HABITS_URL}/${habitId}/pomodoros`)
   .then(response => response.json())
   .then(pomodoros => {
     console.log(pomodoros);
     for (const pomodoro of pomodoros.data) {
-      let r = new Pomodoro(pomodoro.id, pomodoro.attributes.author, pomodoro.attributes.content, pomodoro.attributes.rating);
+      let r = new Pomodoro(pomodoro.id, pomodoro.attributes.length, false);
       r.renderPomodoro();
     }
   });
@@ -56,13 +56,13 @@ function fetchHabitWithPomodoros() {
 function habitFormSubmission() {
   event.preventDefault();
   let title = document.getElementById('title').value;
-  let author = document.getElementById('author').value;
+  let goal = document.getElementById('goal').value;
   let habit = {
     title: title,
-    author: author
+    goal: goal
   }
 
-  fetch(BOOKS_URL, {
+  fetch(HABITS_URL, {
     method: "POST",
     headers: {
         'Accept': 'application/json',
@@ -72,7 +72,7 @@ function habitFormSubmission() {
     })
     .then(resp => resp.json())
     .then(habit => {
-        let b  = new Habit(habit.id, habit.title, habit.author)
+        let b  = new Habit(habit.id, habit.title, habit.goal)
         b.renderHabit();
     });
 }

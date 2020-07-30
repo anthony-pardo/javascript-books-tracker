@@ -1,9 +1,8 @@
 class Pomodoro {
-  constructor(id, author, content, rating) {
+  constructor(id, length, completed=false) {
     this.id = id;
-    this.author = author;
-    this.content = content;
-    this.rating = rating;
+    this.length = length;
+    this.completed = completed;
   }
 
   // render habit instance method
@@ -14,13 +13,10 @@ class Pomodoro {
     `<div class="col-md-4" id="habit-id-${this.id}">
       <div class="card mb-4 shadow-sm">
         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-          <title>${this.author}</title>
+          <title>${this.length}</title>
           <rect width="100%" height="100%" fill="#55595c"/>
-          <text x="50%" y="50%" fill="#eceeef" dy=".3em">${this.rating}</text><br>
-          <text x="50%" y="50%" fill="#eceeef" dy=".3em">by ${this.author}</text>
         </svg>
         <div class="card-body">
-          <p class="card-text">${this.content}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               <button type="button" class="btn btn-sm btn-outline-secondary delete-pomodoro-button" onclick="deletePomodoro()" data-id="${this.id}">Delete Pomodoro</button>
