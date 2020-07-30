@@ -3,7 +3,7 @@ class CreateHabits < ActiveRecord::Migration[6.0]
     create_table :habits do |t|
       t.string :title
       t.integer :goal
-      t.integer :actual
+      t.integer :actual, :default => 0
 
       t.timestamps
     end
