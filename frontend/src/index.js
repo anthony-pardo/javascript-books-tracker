@@ -22,7 +22,7 @@ function fetchHabits() {
   });
 }
 
-// read individual Habit
+// read individual habit with its pomodoros
 function fetchHabitWithPomodoros() {
   const habitsDiv = document.getElementById('habits-container');
   habitsDiv.innerHTML = "";
