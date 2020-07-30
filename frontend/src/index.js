@@ -35,10 +35,10 @@ function fetchHabitWithPomodoros() {
   .then(response => response.json())
   .then(habit => {
     console.log(habit);
-    let b = new Habit(habit.data.id, habit.data.attributes.title, habit.data.attributes.goal);
+    let b = new Habit(habit.id, habit.title, habit.goal);
     b.renderHabit();
     const pomodorosHeader = document.getElementById('pomodoros-header');
-    pomodorosHeader.innerHTML = `Pomodoros for ${habit.data.attributes.title}:`;
+    pomodorosHeader.innerHTML = `Pomodoros for ${habit.title}:`;
   });
 
   fetch(`${HABITS_URL}/${habitId}/pomodoros`)

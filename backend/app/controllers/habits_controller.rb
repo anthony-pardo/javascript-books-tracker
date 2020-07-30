@@ -1,6 +1,6 @@
 class HabitsController < ApplicationController
   def index
-    habits = User.all
+    habits = Habit.all
     options = {
       include: [:pomodoros], fields: { pomodoros: [:length, :completed] }
     }
@@ -13,7 +13,7 @@ class HabitsController < ApplicationController
   end
 
   def create
-    habit = User.new(habit_params)
+    habit = Habit.new(habit_params)
 
     if habit.save
       render json: habit, status: :created, location: habit
