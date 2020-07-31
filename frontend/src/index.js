@@ -115,7 +115,7 @@ function pomodoroFormSubmission() {
 function addPomodoro() {
   console.log('here');
   const habitId = event.target.dataset.id;
-  const pomodoroForm = document.getElementById('new-pomodoro-form');
+  const pomodoroForm = document.getElementById('new-p-form');
   pomodoroForm.className = "";
   document.getElementById('length').focus();
   document.getElementById('habitId').value = habitId;
