@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :habits do
     resources :pomodoros
   end
+
+  resources :pomodoros 
 end

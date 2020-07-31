@@ -9,7 +9,10 @@ class HabitsController < ApplicationController
 
   def show
     habit = Habit.find_by(id: params[:id])
-    render json: habit
+    options = {
+      include: [:pomodoros], fields: { pomodoros: [:length, :completed] }
+    }
+    render json: HabitSerializer.new(habit, options)
   end
 
   def create

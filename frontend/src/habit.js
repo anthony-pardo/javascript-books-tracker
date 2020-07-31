@@ -17,8 +17,8 @@ class Habit {
           <title>${this.title}</title>
           <rect width="100%" height="100%" fill="#55595c"/>
           <text x="50%" y="50%" fill="#eceeef" dy=".3em">${this.title}</text><br>
-          <text x="50%" y="50%" fill="#eceeef" dy=".3em">goal: ${this.goal}</text>
-          <text x="50%" y="50%" fill="#eceeef" dy=".3em">actual: ${this.actual}</text>
+          <text x="50%" y="50%" fill="#eceeef" dy=".3em" dx=".3em">goal: ${this.goal}</text>
+          <text x="50%" y="50%" fill="#eceeef" dy=".3em" dx=".3em">actual: ${this.actual}</text>
         </svg>
         <div class="card-body">
           <p class="card-text">Title Summary.</p>
@@ -26,6 +26,7 @@ class Habit {
             <div class="btn-group">
               <button type="button" class="btn btn-sm btn-outline-secondary delete-habit-button" onclick="deleteHabit()" data-id="${this.id}">Delete Habit</button>
               <button type="button" class="btn btn-sm btn-outline-secondary" onclick="fetchHabitWithPomodoros()" data-id="${this.id}">View Habit Details</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addPomodoro()" data-id="${this.id}">New Pomodoro</button>
             </div>
           </div>
         </div>
